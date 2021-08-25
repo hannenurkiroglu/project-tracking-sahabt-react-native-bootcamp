@@ -4,4 +4,6 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   arrowParens: 'avoid',
+  // FIXED to end of line warning
+  endOfLine: 'auto',
 };
