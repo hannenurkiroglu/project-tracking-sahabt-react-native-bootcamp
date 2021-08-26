@@ -22,8 +22,8 @@ export default function LoginScreen() {
   const loginText = 'login';
 
   const [pageData, setPageData] = useState({
-    username: '',
-    password: '',
+    username: 'hanne',
+    password: '123456',
   });
 
   const onChangeText = (key, value) => {
@@ -51,7 +51,7 @@ export default function LoginScreen() {
             resizeMode="contain"
           />
         </View>
-        <View style={{marginVertical: 15}}>
+        <View style={{marginVertical: 10}}>
           <Input
             onChangeText={text => onChangeText('username', text)}
             placeHolder={usernameText}
@@ -61,7 +61,7 @@ export default function LoginScreen() {
             style={styles.input}
           />
         </View>
-        <View style={{marginVertical: 15}}>
+        <View style={{marginVertical: 10}}>
           <Input
             onChangeText={text => onChangeText('password', text)}
             placeHolder={passwordText}
@@ -81,7 +81,7 @@ export default function LoginScreen() {
           />
           <Text style={styles.rememberMeText}>Beni Hatırla</Text>
         </View>
-        <View style={{marginVertical: 15}}>
+        <View style={{marginVertical: 5}}>
           <Button
             onPress={() => alert('Giriş Yap Tetiklendi!!')}
             text="Giriş Yap"
@@ -109,8 +109,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundColor,
     justifyContent: 'center',
   },
+  input: {
+    marginVertical: 5,
+  },
   logo: {width: 300, height: 100},
-  logoContainer: {marginBottom: 25, alignItems: 'center'},
+  logoContainer: {alignItems: 'center'},
   rememberMeContainer: {
     marginVertical: 15,
     flexDirection: 'row',

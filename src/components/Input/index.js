@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 15,
     // WARN Login ekranındaki iconlardaki yükseklik sorunu çözüldü.
-    paddingTop: 10,
+    paddingTop: 15,
   },
   container: {
     flexDirection: 'row',
-    paddingBottom: 5,
+    paddingBottom: 1,
     marginHorizontal: 17,
     borderBottomWidth: 1,
     borderBottomColor: '#97a1be',
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
   text: {
     width: '80%',
     marginTop: 3,
+    paddingTop: 15,
     fontSize: fonts.f13,
     letterSpacing: 1,
     fontWeight: '600',
