@@ -14,12 +14,15 @@ import {images, colors, fonts} from '../constants';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
+import {useDispatch} from 'react-redux';
 
 export default function LoginScreen() {
   const usernameText = 'username';
   const passwordText = 'password';
   const rememberMeText = 'rememberMe';
   const loginText = 'login';
+
+  // const dispatch = useDispatch();
 
   const [pageData, setPageData] = useState({
     username: 'hanne',
