@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
   icon: {marginRight: 15},
   container: {
     flexDirection: 'row',
-    paddingBottom: 10,
+    paddingBottom: 5,
     marginHorizontal: 17,
     borderBottomWidth: 1,
     borderBottomColor: '#97a1be',
   },
   text: {
     width: '80%',
-    marginTop: 3,
+    marginTop: 1,
     fontSize: fonts.f13,
     letterSpacing: 1,
     fontWeight: '600',
