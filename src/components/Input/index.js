@@ -42,7 +42,11 @@ export default function Input({
 }
 
 const styles = StyleSheet.create({
-  icon: {marginRight: 15},
+  icon: {
+    marginRight: 15,
+    // WARN Login ekranındaki iconlardaki yükseklik sorunu çözüldü.
+    paddingTop: 10,
+  },
   container: {
     flexDirection: 'row',
     paddingBottom: 5,
@@ -52,7 +56,7 @@ const styles = StyleSheet.create({
   },
   text: {
     width: '80%',
-    marginTop: 1,
+    marginTop: 3,
     fontSize: fonts.f13,
     letterSpacing: 1,
     fontWeight: '600',
