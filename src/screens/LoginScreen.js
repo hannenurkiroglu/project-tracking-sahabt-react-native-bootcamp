@@ -15,6 +15,11 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 
 export default function LoginScreen() {
+  const usernameText = 'username';
+  const passwordText = 'password';
+  const rememberMeText = 'rememberMe';
+  const loginText = 'login';
+
   const [pageData, setPageData] = useState({
     username: '',
     password: '',
@@ -29,34 +34,35 @@ export default function LoginScreen() {
     // <KeyboardAvoidingView
     //   behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     //   style={styles.container}>
-    <ScrollView
-      style={{backgroundColor: colors.backgroundColor}}
-      showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <Image
-          source={images.logo}
-          style={{width: 300, height: 100}}
-          resizeMethod="scale"
-          resizeMode="contain"
-        />
+    <View style={styles.container}>
+      <View style={styles.innerContainer}>
+        <View style={styles.logoContainer}>
+          <Image
+            source={images.logo}
+            style={styles.logo}
+            resizeMethod="scale"
+            resizeMode="contain"
+          />
+        </View>
         <View style={{marginVertical: 15}}>
           <Input
             onChangeText={text => onChangeText('username', text)}
-            placeHolder="Kullanıcı Adı"
+            placeHolder={usernameText}
             value={pageData.username}
             icon={'mail-outline'}
             color={colors.cFFFFFF}
-            placeHolderTextColor={colors.cFFFFFF}
+            style={styles.input}
           />
         </View>
         <View style={{marginVertical: 15}}>
           <Input
             onChangeText={text => onChangeText('password', text)}
-            placeHolder="Şifre"
+            placeHolder={passwordText}
             value={pageData.password}
+            isHidden
             icon={'lock-outline'}
             color={colors.cFFFFFF}
-            placeHolderTextColor={colors.cFFFFFF}
+            style={styles.input}
           />
         </View>
         <View style={{marginVertical: 15}}>
@@ -66,7 +72,7 @@ export default function LoginScreen() {
           />
         </View>
       </View>
-    </ScrollView>
+    </View>
     // </KeyboardAvoidingView>
   );
 }
@@ -74,9 +80,19 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // marginVertical: 100,
+    // justifyContent: 'center',
+    // alignItems: 'center',
     backgroundColor: colors.backgroundColor,
   },
+  innerContainer: {
+    flex: 1,
+    backgroundColor: colors.backgroundColor,
+    justifyContent: 'center',
+  },
+  input: {
+    marginVertical: 5,
+  },
+  logo: {width: 300, height: 100},
+  logoContainer: {marginBottom: 25, alignItems: 'center'},
 });
