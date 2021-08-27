@@ -17,12 +17,13 @@ import Checkbox from '../components/Checkbox';
 import DeviceInfo from 'react-native-device-info';
 import {useDispatch, useSelector} from 'react-redux';
 import {hideLoader, setUser, toggleLoader} from '../redux/system/actions';
+import I18n from '../i18n';
 
 export default function LoginScreen() {
-  const usernameText = 'username';
-  const passwordText = 'password';
-  const rememberMeText = 'rememberMe';
-  const loginText = 'login';
+  const usernameText = I18n.t('username');
+  const passwordText = I18n.t('password');
+  const rememberMeText = I18n.t('rememberMe');
+  const loginText = I18n.t('login');
 
   const dispatch = useDispatch();
 
@@ -103,10 +104,10 @@ export default function LoginScreen() {
             checked={rememberMe}
             checkedColor={colors.white[50]}
           />
-          <Text style={styles.rememberMeText}>Beni Hatırla</Text>
+          <Text style={styles.rememberMeText}>{rememberMeText}</Text>
         </View>
         <View style={{marginVertical: 5}}>
-          <Button onPress={() => onLogin()} text="Giriş Yap" />
+          <Button onPress={() => onLogin()} text={loginText} />
         </View>
       </View>
       <View style={styles.versionNumberContainer}>
