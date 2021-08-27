@@ -15,6 +15,7 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
 import DeviceInfo from 'react-native-device-info';
+import CustomView from '../components/CostomView';
 import {useDispatch, useSelector} from 'react-redux';
 import {hideLoader, setUser, toggleLoader} from '../redux/system/actions';
 import I18n from '../i18n';
@@ -66,7 +67,7 @@ export default function LoginScreen() {
     // <KeyboardAvoidingView
     //   behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     //   style={styles.container}>
-    <View style={styles.container}>
+    <CustomView style={styles.container}>
       <View style={styles.innerContainer}>
         <View style={styles.logoContainer}>
           <Image
@@ -113,7 +114,7 @@ export default function LoginScreen() {
       <View style={styles.versionNumberContainer}>
         <Text style={styles.versionNumberText}>v{versionNumber}</Text>
       </View>
-    </View>
+    </CustomView>
     // </KeyboardAvoidingView>
   );
 }
@@ -121,14 +122,9 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginVertical: 100,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: colors.backgroundColor,
   },
   innerContainer: {
     flex: 1,
-    backgroundColor: colors.backgroundColor,
     justifyContent: 'center',
   },
   input: {
@@ -154,6 +150,6 @@ const styles = StyleSheet.create({
   versionNumberContainer: {
     width: '100%',
     alignItems: 'center',
-    paddingBottom: 10,
+    paddingBottom: 15,
   },
 });
