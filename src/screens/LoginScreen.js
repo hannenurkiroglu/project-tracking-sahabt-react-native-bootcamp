@@ -14,6 +14,7 @@ import {images, colors, fonts} from '../constants';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
+import DeviceInfo from 'react-native-device-info';
 import {useDispatch, useSelector} from 'react-redux';
 import {hideLoader, setUser, toggleLoader} from '../redux/system/actions';
 
@@ -40,6 +41,8 @@ export default function LoginScreen() {
   const handleRememberMe = () => {
     setRememberMe(remember => !remember);
   };
+
+  const versionNumber = DeviceInfo.getVersion();
 
   const onLogin = () => {
     // !!! Dispatch eksik olursa reducer tetiklenmez
@@ -107,7 +110,7 @@ export default function LoginScreen() {
         </View>
       </View>
       <View style={styles.versionNumberContainer}>
-        <Text style={styles.versionNumberText}>v 1.0.0</Text>
+        <Text style={styles.versionNumberText}>v{versionNumber}</Text>
       </View>
     </View>
     // </KeyboardAvoidingView>
