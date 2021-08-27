@@ -5,6 +5,8 @@ import {PersistGate} from 'redux-persist/integration/react';
 import Navigation from './src/navigation';
 import store from './src/redux';
 
+Icons.loadFont();
+
 const persistor = persistStore(store);
 
 export default function App() {
