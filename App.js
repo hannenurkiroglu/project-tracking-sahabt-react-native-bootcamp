@@ -4,6 +4,7 @@ import persistStore from 'redux-persist/es/persistStore';
 import {PersistGate} from 'redux-persist/integration/react';
 import Navigation from './src/navigation';
 import store from './src/redux';
+import Icons from 'react-native-vector-icons/Ionicons';
 
 Icons.loadFont();
 
