@@ -15,21 +15,30 @@ export function toggleLoader() {
 
 //Loader kapatır
 export function hideLoader() {
-  return {type: HIDE_LOADER};
+  return {
+    type: HIDE_LOADER,
+  };
 }
 
 // Sistemin temasını set eder
 export function setTheme(payload) {
-  return {type: SET_THEME, payload};
+  return {
+    type: SET_THEME,
+    payload,
+  };
 }
 
 // Sisteme login olmusş kişiyi setler
 export function setUser(payload) {
-  console.log('Actions setUser', payload);
-  return {type: SET_USER, payload};
+  return {
+    type: SET_USER,
+    payload,
+  };
 }
 
 //Sistemde cıkış yapmamımız sağlar
 export function userLogout() {
-  return {type: USER_LOGOUT};
+  return {
+    type: USER_LOGOUT,
+  };
 }
