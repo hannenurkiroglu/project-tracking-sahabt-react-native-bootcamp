@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from '../screens/LoginScreen';
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../navigation/TabNavigation';
 import {useSelector} from 'react-redux';
 
 export const AppScreens = {
