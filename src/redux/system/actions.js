@@ -25,6 +25,7 @@ export function setTheme(payload) {
 
 // Sisteme login olmusş kişiyi setler
 export function setUser(payload) {
+  console.log('Actions setUser', payload);
   return {type: SET_USER, payload};
 }
 

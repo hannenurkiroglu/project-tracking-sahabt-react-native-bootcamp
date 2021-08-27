@@ -14,7 +14,8 @@ import {images, colors, fonts} from '../constants';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {hideLoader, setUser, toggleLoader} from '../redux/system/actions';
 
 export default function LoginScreen() {
   const usernameText = 'username';
@@ -22,7 +23,7 @@ export default function LoginScreen() {
   const rememberMeText = 'rememberMe';
   const loginText = 'login';
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [pageData, setPageData] = useState({
     username: 'hanne',
@@ -38,6 +39,23 @@ export default function LoginScreen() {
 
   const handleRememberMe = () => {
     setRememberMe(remember => !remember);
+  };
+
+  const onLogin = () => {
+    // !!! Dispatch eksik olursa reducer tetiklenmez
+    dispatch(toggleLoader());
+
+    dispatch(
+      setUser({
+        name: 'Hanne',
+        surname: 'Kıroğlu',
+        linkedinProfile: 'hannenurkiroglu',
+        token: 'asdkfjaldfkj',
+        companyName: 'SAHA BT',
+      }),
+    );
+
+    dispatch(hideLoader());
   };
 
   return (
@@ -85,10 +103,7 @@ export default function LoginScreen() {
           <Text style={styles.rememberMeText}>Beni Hatırla</Text>
         </View>
         <View style={{marginVertical: 5}}>
-          <Button
-            onPress={() => alert('Giriş Yap Tetiklendi!!')}
-            text="Giriş Yap"
-          />
+          <Button onPress={() => onLogin()} text="Giriş Yap" />
         </View>
       </View>
       <View style={styles.versionNumberContainer}>
