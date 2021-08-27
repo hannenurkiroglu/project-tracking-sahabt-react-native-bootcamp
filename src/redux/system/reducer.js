@@ -25,7 +25,6 @@ export function systemReducer(state = initialState, action) {
       return {...state, loading: false};
 
     case SET_USER:
-      console.log('SET USER REDUCERS', action.payload);
       return {...state, isLogin: true, userInfo: action.payload};
 
     case USER_LOGOUT:
