@@ -7,7 +7,7 @@ const TabBarIcon = ({name}) => {
 
   const color = isDark ? colors.dark.icon : colors.light.icon;
 
-  return <Icon name={name} color={'red'} size={25} />;
+  return <Icon name={name} color={color} size={25} />;
 };
 
 export default TabBarIcon;
