@@ -22,7 +22,7 @@ Open a new terminal inside your React Native project folder. Run the following:
 npx react-native run-android
 ~~~
 ### Base packages to start with.
-Please add the following packages in your project You can use [this](https://www.bigbinary.com/learn-react-native/initial-repo-configurations#base-packages-to-start-with) links.
+Please add the following base packages in your project You can use [this](https://www.bigbinary.com/learn-react-native/initial-repo-configurations#base-packages-to-start-with) links.
 * @react-navigation/native react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view @react-navigation/stack
 * redux-persist @react-native-async-storage/async-storage
 * redux react-redux
