@@ -3,10 +3,15 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import TabBarIcon from '../components/TabBarIcon';
+import I18n from '../i18n';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
+  const homeTitle = I18n.t('home');
+
+  const profileTitle = I18n.t('profile');
+
   return (
     <Tab.Navigator screenOptions={{headerTitleAlign: 'center'}}>
       <Tab.Screen
@@ -14,6 +19,7 @@ export default function TabNavigator() {
         component={HomeScreen}
         options={{
           tabBarIcon: () => <TabBarIcon name="home-outline" />,
+          title: homeTitle,
         }}
       />
       <Tab.Screen
@@ -21,6 +27,7 @@ export default function TabNavigator() {
         component={ProfileScreen}
         options={{
           tabBarIcon: () => <TabBarIcon name="person-outline" />,
+          title: profileTitle,
         }}
       />
     </Tab.Navigator>
