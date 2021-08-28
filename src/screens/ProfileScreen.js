@@ -11,7 +11,6 @@ export default function ProfileScreen() {
 
   const toggleTheme = val => {
     dispatch(setTheme(val));
-    console.log('Switch value', val);
   };
   return (
     <CustomView
