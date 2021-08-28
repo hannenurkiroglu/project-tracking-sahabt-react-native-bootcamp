@@ -1,9 +1,10 @@
 import React, {useMemo} from 'react';
 import {View} from 'react-native';
 import {colors} from '../../constants';
+import {useSelector} from 'react-redux';
 
 export default function CustomView(props) {
-  const isDark = false;
+  const isDark = useSelector(state => state.system.isDarkMode);
 
   // style dosyası değişmemişse kendini render etme.
   const containerStyle = useMemo(() => {
