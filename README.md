@@ -2,7 +2,9 @@
 ## Saha BT Bootcamp
 
 ### Create a React Native Project called "projectTracker"
-`npx react-native init projectTracker --version 0.64.2`
+~~~bash
+npx react-native init projectTracker --version 0.64.2
+~~~
 ### Base packages to start with.
 Please add the following packages in your project [bigbinary](https://www.bigbinary.com/learn-react-native/initial-repo-configurations#base-packages-to-start-with).
 * @react-navigation/native react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view @react-navigation/stack
