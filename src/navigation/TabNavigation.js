@@ -8,7 +8,7 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{headerTitleAlign: 'center'}}>
       <Tab.Screen
         name="Root"
         component={HomeScreen}
