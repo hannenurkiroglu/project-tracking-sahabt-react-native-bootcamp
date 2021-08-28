@@ -5,22 +5,22 @@
 ~~~bash
 npx react-native init projectTracker --version 0.64.2
 ~~~
-> Please don't use 0.65 version of react-native package! It's not stable.
+> Please don't use 0.65 version of react-native package! It's not stable for now.
 
 ### For Running projectTracker application
 1. Start Metro
 
-To start Metro, run `npx react-native start` inside your React Native project folder:
-~~~bash
-npx react-native start
-~~~
+  To start Metro, run `npx react-native start` inside your React Native project folder:
+  ~~~bash
+  npx react-native start
+  ~~~
 
 2. Start the application
 
-Open a new terminal inside your React Native project folder. Run the following:
-~~~bash
-npx react-native run-android
-~~~
+  Open a new terminal inside your React Native project folder. Run the following:
+  ~~~bash
+  npx react-native run-android
+  ~~~
 ### Base packages to start with.
 Please add the following packages in your project You can use [this](https://www.bigbinary.com/learn-react-native/initial-repo-configurations#base-packages-to-start-with) links.
 * @react-navigation/native react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view @react-navigation/stack
