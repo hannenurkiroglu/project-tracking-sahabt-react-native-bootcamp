@@ -1,10 +1,24 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Switch} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {setTheme} from '../redux/system/actions';
+import CustomView from '../components/CustomView';
 
 export default function ProfileScreen() {
+  const isDarkMode = useSelector(state => state.system.isDarkMode);
+
+  const dispatch = useDispatch();
+
+  const toggleTheme = val => {
+    dispatch(setTheme(val));
+    console.log('Switch value', val);
+  };
   return (
-    <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-      <Text>Profile Screen</Text>
-    </View>
+    <CustomView
+      style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+      <Text>Dark Mode</Text>
+
+      <Switch onValueChange={val => toggleTheme(val)} value={isDarkMode} />
+    </CustomView>
   );
 }

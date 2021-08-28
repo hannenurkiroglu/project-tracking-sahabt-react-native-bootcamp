@@ -15,7 +15,7 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
 import DeviceInfo from 'react-native-device-info';
-import CustomView from '../components/CostomView';
+import CustomView from '../components/CustomView';
 import {useDispatch, useSelector} from 'react-redux';
 import {hideLoader, setUser, toggleLoader} from '../redux/system/actions';
 import I18n from '../i18n';
