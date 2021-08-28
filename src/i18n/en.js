@@ -3,6 +3,7 @@ export default {
   password: 'Password',
   rememberMe: 'Remember Me',
   login: 'Login',
+  logOut: 'Log Out',
   profile: 'Profile',
   home: 'Home',
 };
