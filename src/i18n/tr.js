@@ -6,4 +6,5 @@ export default {
   logOut: 'Çıkış Yap',
   profile: 'Profil',
   home: 'Ana Sayfa',
+  task: 'Görevlerim',
 };

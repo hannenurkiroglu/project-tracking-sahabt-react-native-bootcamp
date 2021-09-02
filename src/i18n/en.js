@@ -6,4 +6,5 @@ export default {
   logOut: 'Log Out',
   profile: 'Profile',
   home: 'Home',
+  task: 'Task',
 };
