@@ -5,3 +5,9 @@ export function GetIsDarkMode() {
 
   return isDarkMode;
 }
+
+export function GetUserInfo() {
+  const userInfo = useSelector(state => state.system.userInfo);
+
+  return userInfo;
+}
