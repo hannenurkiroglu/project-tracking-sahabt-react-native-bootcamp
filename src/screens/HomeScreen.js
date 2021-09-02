@@ -5,6 +5,7 @@ import {fonts, colors} from '../constants';
 import CustomView from '../components/CustomView';
 import {userLogout} from '../redux/system/actions';
 import Button from '../components/Button';
+import Header from '../components/Header';
 import I18n from '../i18n';
 
 export default function HomeScreen() {
@@ -22,8 +23,8 @@ export default function HomeScreen() {
   };
 
   return (
-    <CustomView
-      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <CustomView style={{flex: 1}}>
+      <Header title="Home" />
       <Text
         style={{
           fontWeight: 'bold',
