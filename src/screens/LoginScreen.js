@@ -54,9 +54,15 @@ export default function LoginScreen() {
       setUser({
         name: 'Hanne',
         surname: 'Kıroğlu',
-        linkedinProfile: 'hannenurkiroglu',
+        displayName: 'Hanne Kıroğlu',
         token: 'asdkfjaldfkj',
-        companyName: 'SAHA BT',
+        company: 'SAHA BT',
+        mobile: '0542565455',
+        title: 'Mobile Developer',
+        managerDisplayName: 'Hannenur Kıroğlu',
+        unitName: 'Mobil Geliştirici',
+        profilePic:
+          'https://i.pinimg.com/originals/de/8b/34/de8b34604ea0a481162429943796d9df.png',
       }),
     );
 
