@@ -83,17 +83,17 @@ export default function LoginScreen() {
             resizeMode="contain"
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={styles.inputContainer}>
           <Input
             onChangeText={text => onChangeText('username', text)}
             placeHolder={usernameText}
             value={pageData.username}
             icon={'mail-outline'}
             color={colors.cFFFFFF}
-            style={styles.input}
+            // style={styles.input}
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={styles.inputContainer}>
           <Input
             onChangeText={text => onChangeText('password', text)}
             placeHolder={passwordText}
@@ -101,7 +101,7 @@ export default function LoginScreen() {
             isHidden
             icon={'lock-outline'}
             color={colors.cFFFFFF}
-            style={styles.input}
+            // style={styles.input}
           />
         </View>
         <View style={styles.rememberMeContainer}>
@@ -133,8 +133,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  input: {
-    marginVertical: 5,
+  // input: {
+  //   marginVertical: 5,
+  // },
+  inputContainer: {
+    margin: 15,
   },
   logo: {width: 300, height: 100},
   logoContainer: {alignItems: 'center'},
