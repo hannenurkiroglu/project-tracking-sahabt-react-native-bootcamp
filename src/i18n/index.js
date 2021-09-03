@@ -4,14 +4,21 @@ import {I18nManager} from 'react-native';
 import en from './en';
 import tr from './tr';
 
+const translations = {
+  tr,
+  en,
+};
+
 // getLocales = Cihazın tercih edilen dil dosyasını getirir.
 const locales = RnLocalize.getLocales();
-
-console.log('locales', locales);
 
 // languageTag = Dilimizin dil kodunu getiriyor.
 I18n.locale = locales[0].languageTag;
 
+export const changeLanguage = language => {
+  console.log('changeLanguage i18n', language);
+  I18n.locale = language;
+};
 // isRTL = İlgili dilin sağdan sola mı yoksa soldan sağa mı yazıldığını belirtir.
 export const isRtl = locales[0].isRTL;
 
@@ -25,9 +32,6 @@ I18n.fallbacks = true;
 I18n.locales.no = 'tr';
 
 // Uygulama içerisinde kullanılacak olan dillerin nesne olarak alınmasını sağlar.
-I18n.translations = {
-  tr,
-  en,
-};
+I18n.translations = translations;
 
 export default I18n;
