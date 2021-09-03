@@ -64,22 +64,21 @@ export default function ProfileScreen({navigation}) {
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <View>
             <View style={styles.infoBox}>
-              <Image
-                source={{uri: userInfo.profilePic}}
-                style={{width: 100, height: 100}}
-                resizeMethod="scale"
-                resizeMode="contain"
-              />
-              <Dropdown
-                items={[
-                  {label: 'Türkçe', value: 'tr'},
-                  {label: 'English', value: 'en'},
-                ]}
-                value={language}
-                placeholder="Dil Seçiniz"
-                onValueChange={val => handleLanguageChange(val)}
-                onDonePress={() => onDonePress()}
-              />
+              {userInfo?.profilePic ? (
+                <Image
+                  source={{uri: userInfo.profilePic}}
+                  style={styles.profileImage}
+                  resizeMethod="scale"
+                  resizeMode="contain"
+                />
+              ) : (
+                <Image
+                  source={require('../assests/images/noImage.jpeg')}
+                  style={styles.profileImage}
+                  resizeMethod="scale"
+                  resizeMode="contain"
+                />
+              )}
               <View style={styles.cell}>
                 <Text style={styles.info}>Ünvan</Text>
                 <Text style={styles.info}>{userInfo.title}</Text>
@@ -108,13 +107,32 @@ export default function ProfileScreen({navigation}) {
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}>
+                <Text style={{color: colors.cFFFFFF, marginHorizontal: 10}}>
+                  Tema Seçimi
+                </Text>
                 <Switch
                   onValueChange={val => toggleTheme(val)}
                   value={isDarkMode}
                 />
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
                 <Text style={{color: colors.cFFFFFF, marginHorizontal: 10}}>
-                  Tema Seçimi
+                  Dil Seçimi
                 </Text>
+                <Dropdown
+                  items={[
+                    {label: 'Türkçe', value: 'tr'},
+                    {label: 'English', value: 'en'},
+                  ]}
+                  value={language}
+                  placeholder="Dil Seçiniz"
+                  onValueChange={val => handleLanguageChange(val)}
+                  onDonePress={() => onDonePress()}
+                />
               </View>
               <View>
                 <TouchableOpacity onPress={() => logOut()} style={styles.title}>
@@ -136,6 +154,11 @@ const styles = StyleSheet.create({
   scrollView: {
     paddingBottom: 20,
     marginTop: Platform.OS === 'android' ? 15 : 0,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   },
   cell: {flex: 1},
   topBackground: {},
