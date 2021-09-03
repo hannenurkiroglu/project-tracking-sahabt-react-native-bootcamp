@@ -44,8 +44,14 @@ export default function ProfileScreen({navigation}) {
     if (lang) {
       dispatch(setLanguage(lang));
       changeLanguage(lang);
-      navigation.navigate('Profile');
+      // navigation.navigate('Profile');
     }
+  };
+
+  // FIX: Does it work on android? => onDonePress ?
+  const onDonePress = () => {
+    changeLanguage(language);
+    navigation.navigate('Profile');
   };
 
   return (
@@ -69,8 +75,10 @@ export default function ProfileScreen({navigation}) {
                   {label: 'Türkçe', value: 'tr'},
                   {label: 'English', value: 'en'},
                 ]}
+                value={language}
                 placeholder="Dil Seçiniz"
                 onValueChange={val => handleLanguageChange(val)}
+                onDonePress={() => onDonePress()}
               />
               <View style={styles.cell}>
                 <Text style={styles.info}>Ünvan</Text>
