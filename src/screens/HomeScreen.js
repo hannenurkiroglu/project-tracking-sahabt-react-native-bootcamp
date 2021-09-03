@@ -13,6 +13,10 @@ export default function HomeScreen() {
 
   const isDarkMode = useSelector(state => state.system.isDarkMode);
 
+  // FIX: Eğer useSelector ile language bilgisini almazsak HomeScreen'de dil değişmiyor.
+  const language = useSelector(state => state.system.language);
+  console.log('Language', language);
+
   const dispatch = useDispatch();
 
   const userInfo = useSelector(state => state.system.userInfo);
