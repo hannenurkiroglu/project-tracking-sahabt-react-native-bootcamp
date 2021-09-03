@@ -9,6 +9,7 @@ import Header from '../components/Header';
 import Input from '../components/Input';
 import Dropdown from '../components/Dropdown';
 import I18n from '../i18n';
+import {GetIsDarkMode} from '../redux/system/selectors';
 
 export default function HomeScreen() {
   const [pageData, setPageData] = useState({
@@ -19,7 +20,7 @@ export default function HomeScreen() {
 
   const logOutText = I18n.t('logOut');
 
-  const isDarkMode = useSelector(state => state.system.isDarkMode);
+  const isDarkMode = GetIsDarkMode();
 
   // FIX: Eğer useSelector ile language bilgisini almazsak HomeScreen'de dil değişmiyor.
   const language = useSelector(state => state.system.language);
@@ -56,6 +57,8 @@ export default function HomeScreen() {
             placeholder="Proje Seçiniz"
             onValueChange={val => handleLanguageChange(val)}
             onDonePress={() => onDonePress()}
+            borderColor={isDarkMode ? colors.cFFFFFF : colors.cFFFFFF}
+            color={isDarkMode ? colors.cFFFFFF : colors.cFFFFFF}
           />
         </View>
         <View style={styles.inputContainer}>
@@ -74,6 +77,8 @@ export default function HomeScreen() {
             placeholder="Süre Seçiniz"
             onValueChange={val => handleLanguageChange(val)}
             onDonePress={() => onDonePress()}
+            borderColor={isDarkMode ? colors.cFFFFFF : colors.cFFFFFF}
+            color={isDarkMode ? colors.cFFFFFF : colors.cFFFFFF}
           />
         </View>
         <View style={styles.inputContainer}>
