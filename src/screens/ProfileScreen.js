@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -9,18 +9,24 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {fonts, colors} from '../constants';
-import {setTheme, userLogout} from '../redux/system/actions';
+import {setLanguage, setTheme, userLogout} from '../redux/system/actions';
 import CustomView from '../components/CustomView';
 import Header from '../components/Header';
-import I18n from '../i18n';
+import I18n, {changeLanguage} from '../i18n';
 import {GetIsDarkMode, GetUserInfo} from '../redux/system/selectors';
+import Dropdown from '../components/Dropdown';
 
-export default function ProfileScreen() {
+export default function ProfileScreen({navigation}) {
+  // const [lang, setLang] = useState('tr');
+
   const logOutText = I18n.t('logOut');
 
   const isDarkMode = GetIsDarkMode();
+
+  const language = useSelector(state => state.system.language);
+  console.log('Language', language);
 
   const userInfo = GetUserInfo();
 
@@ -32,6 +38,14 @@ export default function ProfileScreen() {
 
   const logOut = () => {
     dispatch(userLogout());
+  };
+
+  const handleLanguageChange = lang => {
+    if (lang) {
+      dispatch(setLanguage(lang));
+      changeLanguage(lang);
+      navigation.navigate('Profile');
+    }
   };
 
   return (
@@ -49,6 +63,14 @@ export default function ProfileScreen() {
                 style={{width: 100, height: 100}}
                 resizeMethod="scale"
                 resizeMode="contain"
+              />
+              <Dropdown
+                items={[
+                  {label: 'Türkçe', value: 'tr'},
+                  {label: 'English', value: 'en'},
+                ]}
+                placeholder="Dil Seçiniz"
+                onValueChange={val => handleLanguageChange(val)}
               />
               <View style={styles.cell}>
                 <Text style={styles.info}>Ünvan</Text>
