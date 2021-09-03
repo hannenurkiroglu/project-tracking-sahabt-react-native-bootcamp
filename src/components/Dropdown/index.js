@@ -9,7 +9,9 @@ export default function Dropdown({
   items,
   title,
   value,
-  style = {},
+  style,
+  borderColor,
+  color,
   onValueChange,
   placeholder = 'Seçiniz',
   onDonePress = () => {},
@@ -19,7 +21,30 @@ export default function Dropdown({
   return (
     <View>
       <RNPickerSelect
-        style={pickerStyles}
+        style={{
+          inputIOS: {
+            fontSize: fonts.f13,
+            fontWeight: 'bold',
+            paddingVertical: 12,
+            paddingHorizontal: 10,
+            borderWidth: 1,
+            borderColor: borderColor,
+            borderRadius: 4,
+            color: color,
+            paddingRight: 30, // to ensure the text is never behind the icon
+          },
+          inputAndroid: {
+            fontSize: fonts.f13,
+            fontWeight: 'bold',
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+            borderWidth: 0.5,
+            borderColor: borderColor,
+            borderRadius: 8,
+            color: color,
+            paddingRight: 30, // to ensure the text is never behind the icon
+          },
+        }}
         onValueChange={val => onValueChange(val)}
         useNativeAndroidPickerStyle={false}
         placeholder={{label: placeholder, value: null}}
@@ -32,7 +57,7 @@ export default function Dropdown({
             <Icon
               name="expand-more"
               size={20}
-              color={colors.white[100]}
+              color={color}
               style={{paddingVertical: 12, paddingHorizontal: 10}}
             />
           );
@@ -42,27 +67,27 @@ export default function Dropdown({
   );
 }
 
-const pickerStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: fonts.f13,
-    fontWeight: 'bold',
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 4,
-    color: 'white',
-    paddingRight: 30, // to ensure the text is never behind the icon
-  },
-  inputAndroid: {
-    fontSize: fonts.f13,
-    fontWeight: 'bold',
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderWidth: 0.5,
-    borderColor: 'white',
-    borderRadius: 8,
-    color: 'white',
-    paddingRight: 30, // to ensure the text is never behind the icon
-  },
-});
+// const pickerStyles = StyleSheet.create({
+//   inputIOS: {
+//     fontSize: fonts.f13,
+//     fontWeight: 'bold',
+//     paddingVertical: 12,
+//     paddingHorizontal: 10,
+//     borderWidth: 1,
+//     // borderColor: 'white',
+//     borderRadius: 4,
+//     color: 'white',
+//     paddingRight: 30, // to ensure the text is never behind the icon
+//   },
+//   inputAndroid: {
+//     fontSize: fonts.f13,
+//     fontWeight: 'bold',
+//     paddingHorizontal: 10,
+//     paddingVertical: 8,
+//     borderWidth: 0.5,
+//     // borderColor: 'white',
+//     borderRadius: 8,
+//     color: 'white',
+//     paddingRight: 30, // to ensure the text is never behind the icon
+//   },
+// });
