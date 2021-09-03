@@ -61,8 +61,8 @@ export default function LoginScreen() {
         title: 'Mobile Developer',
         managerDisplayName: 'Hannenur Kıroğlu',
         unitName: 'Mobil Geliştirici',
-        profilePic:
-          'https://i.pinimg.com/originals/de/8b/34/de8b34604ea0a481162429943796d9df.png',
+        profilePic: null,
+        // 'https://i.pinimg.com/originals/de/8b/34/de8b34604ea0a481162429943796d9df.png',
       }),
     );
 
