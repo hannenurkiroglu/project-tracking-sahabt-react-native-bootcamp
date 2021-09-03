@@ -4,6 +4,7 @@ import {
   SET_THEME,
   SET_USER,
   USER_LOGOUT,
+  SET_LANGUAGE,
 } from './actionTypes';
 
 // Loader Açar
@@ -28,7 +29,15 @@ export function setTheme(payload) {
   };
 }
 
-// Sisteme login olmusş kişiyi setler
+// Sistemin dilini set eder
+export function setLanguage(payload) {
+  return {
+    type: SET_LANGUAGE,
+    payload,
+  };
+}
+
+// Sisteme login olmuş kişiyi setler
 export function setUser(payload) {
   return {
     type: SET_USER,
