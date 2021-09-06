@@ -32,7 +32,7 @@ export function systemReducer(state = initialState, action) {
         ...state,
         userInfo: {},
         token: '',
-        language: 'tr',
+        language: '',
         loading: false,
         isLogin: false,
       };
