@@ -30,6 +30,12 @@ export default function ProfileScreen({navigation}) {
   console.log('Language', language);
 
   const userInfo = GetUserInfo();
+  console.log(
+    'profile screen coordinates: ',
+    Number(userInfo?.location?.coordinates.latitude),
+    ' dongidud: ',
+    Number(userInfo?.location?.coordinates.longitude),
+  );
 
   const dispatch = useDispatch();
 
@@ -77,9 +83,9 @@ export default function ProfileScreen({navigation}) {
         contentContainerStyle={styles.scrollView}
         showsVerticalScrollIndicator={false}>
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          {userInfo?.profilePic ? (
+          {userInfo?.picture ? (
             <Image
-              source={{uri: userInfo.profilePic}}
+              source={{uri: userInfo.picture.medium}}
               style={styles.profileImage}
               resizeMethod="scale"
               resizeMode="contain"
@@ -93,32 +99,37 @@ export default function ProfileScreen({navigation}) {
             />
           )}
           <View style={styles.cell}>
-            <Text style={styles.info}>{userInfo.displayName}</Text>
+            <Text style={styles.info}>
+              {userInfo?.name?.first + ' ' + userInfo?.name?.last}
+            </Text>
           </View>
           <View style={infoBoxStyle}>
             <View style={styles.infoContainer}>
               <View style={cellStyle}>
-                <CustomText style={styles.title} text="Ünvan" />
-                <CustomText style={styles.info} text={userInfo.title} />
-              </View>
-              <View style={cellStyle}>
-                <CustomText style={styles.title} text="Şirket Adı" />
-                <CustomText style={styles.info} text={userInfo.company} />
-              </View>
-              <View style={cellStyle}>
-                <CustomText style={styles.title} text="Telefon" />
-                <CustomText style={styles.info} text={userInfo.mobile} />
+                <CustomText style={styles.title} text="Gender" />
+                <CustomText style={styles.info} text={userInfo?.gender} />
               </View>
               <View style={cellStyle}>
                 <CustomText style={styles.title} text="Yönetici Bilgisi" />
                 <CustomText
                   style={styles.info}
-                  text={userInfo.managerDisplayName}
+                  text={userInfo?.name?.first + ' ' + userInfo?.name?.last}
                 />
               </View>
               <View style={cellStyle}>
-                <CustomText style={styles.title} text="Birim" />
-                <CustomText style={styles.info} text={userInfo.unitName} />
+                <CustomText style={styles.title} text="Email" />
+                <CustomText style={styles.info} text={userInfo?.email} />
+              </View>
+              <View style={cellStyle}>
+                <CustomText style={styles.title} text="Telefon" />
+                <CustomText style={styles.info} text={userInfo?.phone} />
+              </View>
+              <View style={cellStyle}>
+                <CustomText style={styles.title} text="Country" />
+                <CustomText
+                  style={styles.info}
+                  text={userInfo?.location?.country}
+                />
               </View>
             </View>
           </View>
