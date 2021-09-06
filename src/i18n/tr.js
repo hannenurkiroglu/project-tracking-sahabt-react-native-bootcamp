@@ -7,4 +7,5 @@ export default {
   profile: 'Profil',
   home: 'Ana Sayfa',
   task: 'Görevlerim',
+  map: 'Harita',
 };

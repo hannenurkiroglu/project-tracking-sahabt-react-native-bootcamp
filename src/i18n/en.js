@@ -7,4 +7,5 @@ export default {
   profile: 'Profile',
   home: 'Home',
   task: 'Task',
+  map: 'Map',
 };
