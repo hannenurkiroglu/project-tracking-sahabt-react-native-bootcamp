@@ -1,24 +1,17 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Image,
-  Text,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-  StyleSheet,
-  KeyboardAvoidingView,
-  ScrollView,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Image, Text, StyleSheet} from 'react-native';
 import {images, colors, fonts} from '../constants';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
 import DeviceInfo from 'react-native-device-info';
 import CustomView from '../components/CustomView';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {hideLoader, setUser, toggleLoader} from '../redux/system/actions';
+import {GetUserInfo} from '../redux/system/selectors';
 import I18n from '../i18n';
+import axios from '../utils/axios';
+import apiConfig from '../config/apiConfig';
 
 export default function LoginScreen() {
   const usernameText = I18n.t('username');
@@ -29,9 +22,20 @@ export default function LoginScreen() {
   const dispatch = useDispatch();
 
   const [pageData, setPageData] = useState({
-    username: 'hanne',
-    password: '123456',
+    // username: 'SHBTADMIN',
+    // password: 'SAHABT_MANAGER',
+    username: '',
+    password: '',
   });
+
+  useEffect(() => {
+    axios.get(apiConfig.baseUrl).then(user => {
+      setPageData({
+        username: user.data.results[0].login.username,
+        password: user.data.results[0].login.password,
+      });
+    });
+  }, []);
 
   const onChangeText = (key, value) => {
     console.log('onChangeText ', pageData, key, value);
@@ -47,27 +51,42 @@ export default function LoginScreen() {
   const versionNumber = DeviceInfo.getVersion();
 
   const onLogin = () => {
-    // !!! Dispatch eksik olursa reducer tetiklenmez
-    dispatch(toggleLoader());
+    try {
+      dispatch(toggleLoader());
 
-    dispatch(
-      setUser({
-        name: 'Hanne',
-        surname: 'Kıroğlu',
-        displayName: 'Hanne Kıroğlu',
-        token: 'asdkfjaldfkj',
-        company: 'SAHA BT',
-        mobile: '0542565455',
-        title: 'Mobile Developer',
-        managerDisplayName: 'Hannenur Kıroğlu',
-        unitName: 'Mobil Geliştirici',
-        profilePic: null,
-        // 'https://i.pinimg.com/originals/de/8b/34/de8b34604ea0a481162429943796d9df.png',
-      }),
-    );
-
-    dispatch(hideLoader());
+      axios.get(apiConfig.baseUrl).then(response => {
+        // changeLanguage(language);
+        dispatch(setUser(response.data.results[0]));
+        // console.log(JSON.stringify(response.data.results, null, 4));
+      });
+    } catch (error) {
+    } finally {
+      dispatch(hideLoader());
+    }
   };
+
+  // const onLogin = () => {
+  //   // !!! Dispatch eksik olursa reducer tetiklenmez
+  //   dispatch(toggleLoader());
+
+  //   dispatch(
+  //     setUser({
+  //       name: 'Hanne',
+  //       surname: 'Kıroğlu',
+  //       displayName: 'Hanne Kıroğlu',
+  //       token: 'asdkfjaldfkj',
+  //       company: 'SAHA BT',
+  //       mobile: '0542565455',
+  //       title: 'Mobile Developer',
+  //       managerDisplayName: 'Hannenur Kıroğlu',
+  //       unitName: 'Mobil Geliştirici',
+  //       profilePic: null,
+  //       // 'https://i.pinimg.com/originals/de/8b/34/de8b34604ea0a481162429943796d9df.png',
+  //     }),
+  //   );
+
+  //   dispatch(hideLoader());
+  // };
 
   return (
     // <KeyboardAvoidingView
