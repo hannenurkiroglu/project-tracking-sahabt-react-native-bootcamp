@@ -28,8 +28,8 @@ export default function HomeScreen() {
 
   const dispatch = useDispatch();
 
-  const userInfo = useSelector(state => state.system.userInfo);
-  console.log('userInfo', userInfo);
+  // const userInfo = useSelector(state => state.system.userInfo);
+  // console.log('userInfo', userInfo);
 
   const handleLanguageChange = lang => {};
 
