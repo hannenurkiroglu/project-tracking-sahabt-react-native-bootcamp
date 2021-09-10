@@ -11,7 +11,6 @@ import {hideLoader, setUser, toggleLoader} from '../redux/system/actions';
 import I18n from '../i18n';
 import axios from '../utils/axios';
 import apiConfig from '../config/apiConfig';
-import {GetUserInfo} from '../redux/system/selectors';
 
 export default function LoginScreen() {
   const usernameText = I18n.t('username');
@@ -22,16 +21,15 @@ export default function LoginScreen() {
   const dispatch = useDispatch();
 
   const [pageData, setPageData] = useState({
-    // username: 'SHBTADMIN',
-    // password: 'SAHABT_MANAGER',
     username: '',
     password: '',
   });
+  const [userLoginData, setUserLoginData] = useState({});
 
   useEffect(() => {
     axios.get(apiConfig.baseUrl).then(user => {
-      setUser(user.data.results[0]);
       console.log(JSON.stringify(user?.data?.results[0]?.login, null, 4));
+      setUserLoginData(user.data.results[0]);
     });
   }, []);
 
@@ -51,40 +49,17 @@ export default function LoginScreen() {
   const onLogin = () => {
     try {
       dispatch(toggleLoader());
-      // changeLanguage(language);
-      // if (
-      //   response.data.results[0].login.username === pageData.username &&
-      //   response.data.results[0].login.password === pageData.password
-      // ) {
-      console.log('pageData', pageData.username);
+      if (
+        userLoginData.login.username === pageData.username &&
+        userLoginData.login.password === pageData.password
+      ) {
+        dispatch(setUser(userLoginData));
+      }
     } catch (error) {
     } finally {
       dispatch(hideLoader());
     }
   };
-
-  // const onLogin = () => {
-  //   // !!! Dispatch eksik olursa reducer tetiklenmez
-  //   dispatch(toggleLoader());
-
-  //   dispatch(
-  //     setUser({
-  //       name: 'Hanne',
-  //       surname: 'Kıroğlu',
-  //       displayName: 'Hanne Kıroğlu',
-  //       token: 'asdkfjaldfkj',
-  //       company: 'SAHA BT',
-  //       mobile: '0542565455',
-  //       title: 'Mobile Developer',
-  //       managerDisplayName: 'Hannenur Kıroğlu',
-  //       unitName: 'Mobil Geliştirici',
-  //       profilePic: null,
-  //       // 'https://i.pinimg.com/originals/de/8b/34/de8b34604ea0a481162429943796d9df.png',
-  //     }),
-  //   );
-
-  //   dispatch(hideLoader());
-  // };
 
   return (
     // <KeyboardAvoidingView
@@ -150,9 +125,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  // input: {
-  //   marginVertical: 5,
-  // },
   inputContainer: {
     margin: 15,
   },
