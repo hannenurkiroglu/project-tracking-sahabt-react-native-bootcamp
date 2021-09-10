@@ -8,10 +8,10 @@ import DeviceInfo from 'react-native-device-info';
 import CustomView from '../components/CustomView';
 import {useDispatch} from 'react-redux';
 import {hideLoader, setUser, toggleLoader} from '../redux/system/actions';
-import {GetUserInfo} from '../redux/system/selectors';
 import I18n from '../i18n';
 import axios from '../utils/axios';
 import apiConfig from '../config/apiConfig';
+import {GetUserInfo} from '../redux/system/selectors';
 
 export default function LoginScreen() {
   const usernameText = I18n.t('username');
@@ -30,10 +30,8 @@ export default function LoginScreen() {
 
   useEffect(() => {
     axios.get(apiConfig.baseUrl).then(user => {
-      setPageData({
-        username: user.data.results[0].login.username,
-        password: user.data.results[0].login.password,
-      });
+      setUser(user.data.results[0]);
+      console.log(JSON.stringify(user?.data?.results[0]?.login, null, 4));
     });
   }, []);
 
@@ -53,12 +51,12 @@ export default function LoginScreen() {
   const onLogin = () => {
     try {
       dispatch(toggleLoader());
-
-      axios.get(apiConfig.baseUrl).then(response => {
-        // changeLanguage(language);
-        dispatch(setUser(response.data.results[0]));
-        // console.log(JSON.stringify(response.data.results, null, 4));
-      });
+      // changeLanguage(language);
+      // if (
+      //   response.data.results[0].login.username === pageData.username &&
+      //   response.data.results[0].login.password === pageData.password
+      // ) {
+      console.log('pageData', pageData.username);
     } catch (error) {
     } finally {
       dispatch(hideLoader());
